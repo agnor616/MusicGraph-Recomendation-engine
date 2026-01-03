@@ -4,17 +4,19 @@ Este projeto implementa um sistema de recomendação de músicas utilizando o ba
 📐 1. Esboço da Modelagem
 Para representar os padrões de escuta e sugerir novas faixas, o grafo foi modelado da seguinte forma:
 
+                    (Usuario)
+                     |
+              [:OUVIU {qtd}] ou [:CURTIU]
+                     |
+                     v
+                 (Musica) ◄------ [:PERTENCE_AO] ------ (Genero)
+                  /     \                                 ^
+                 /       \                                |
+          [:CANTADA_POR]  \                         [:PERTENCE_AO]
+               /           \                              |
+           (Artista) <--- [:SIMILAR_A] -------------- (Artista)
 
-          (Usuario)
-              │
-      [:OUVIU {qtd}] ou [:CURTIU]
-              ▼
-          (Musica) ◄─── [:PERTENCE_AO] ─── (Genero)
-           /    \                             ▲
-          /      \                            │
-  [:CANTADA_POR]  \                     [:PERTENCE_AO]
-        /          \                          │
-    (Artista) ◄─── [:SIMILAR_A] ────────── (Artista)
+ 
 🚀 2. Como Testar
 Instale o Neo4j Desktop.
 
