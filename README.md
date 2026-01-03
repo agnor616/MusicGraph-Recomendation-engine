@@ -75,6 +75,7 @@ WHERE NOT (eu)-[:OUVIU|CURTIU]->(rec)
 RETURN eu.nome, rec.titulo AS Sugestao LIMIT 2;
 
 Resultado:
+
 ![Resultado Julia](./img/resultado-julia.png)
 
 5. Recomendação Avançada para BRUNO (Ontologia)
