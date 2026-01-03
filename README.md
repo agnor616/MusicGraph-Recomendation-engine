@@ -33,6 +33,7 @@ MATCH (outro)-[:OUVIU|CURTIU]->(rec:Musica)
 WHERE NOT (eu)-[:OUVIU|CURTIU]->(rec)
 RETURN eu.nome, rec.titulo, count(DISTINCT outro) AS Score
 ORDER BY Score DESC LIMIT 3;
+
 Resultado:
 ![Resultado Ana](./img/resultado-ana.png)
 
@@ -46,6 +47,7 @@ MATCH (outro)-[:OUVIU|CURTIU]->(m)
 MATCH (outro)-[:OUVIU|CURTIU]->(rec:Musica)-[:CANTADA_POR]->(artRec:Artista)
 WHERE NOT (eu)-[:OUVIU|CURTIU]->(rec)
 RETURN eu.nome, rec.titulo, artRec.nome AS Artista LIMIT 3;
+
 Resultado:
 ![Resultado Daniel](./img/resultado-daniel.png)
 
@@ -58,6 +60,7 @@ MATCH (eu:Usuario {nome: "Gabriel"})-[:OUVIU|CURTIU]->(m)<-[:OUVIU|CURTIU]-(outr
 MATCH (outro)-[:OUVIU|CURTIU]->(rec:Musica)
 WHERE NOT (eu)-[:OUVIU|CURTIU]->(rec)
 RETURN eu.nome, rec.titulo AS Sugestao LIMIT 2;
+
 Resultado:
 ![Resultado Gabriel](./img/resultado-gabriel.png)
 
@@ -70,6 +73,7 @@ MATCH (eu:Usuario {nome: "Julia"})-[:OUVIU|CURTIU]->(m)<-[:OUVIU|CURTIU]-(outro)
 MATCH (outro)-[:OUVIU|CURTIU]->(rec:Musica)
 WHERE NOT (eu)-[:OUVIU|CURTIU]->(rec)
 RETURN eu.nome, rec.titulo AS Sugestao LIMIT 2;
+
 Resultado:
 ![Resultado Julia](./img/resultado-julia.png)
 
@@ -82,5 +86,6 @@ MATCH (u:Usuario {nome: "Bruno"})-[:OUVIU|CURTIU]->(m:Musica)-[:CANTADA_POR]->(a
 MATCH (a)-[:SIMILAR_A]-(artistaParecido:Artista)<-[:CANTADA_POR]-(rec:Musica)
 WHERE NOT (u)-[:OUVIU|CURTIU]->(rec)
 RETURN u.nome, rec.titulo, "Porque você gosta de " + a.nome AS Motivo LIMIT 3;
+
 Resultado:
 ![Resultado Bruno](./img/resultado-bruno.png)
