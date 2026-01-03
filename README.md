@@ -34,7 +34,7 @@ WHERE NOT (eu)-[:OUVIU|CURTIU]->(rec)
 RETURN eu.nome, rec.titulo, count(DISTINCT outro) AS Score
 ORDER BY Score DESC LIMIT 3;
 Resultado:
-    ![Schema do Banco](./img/resultado ana.png)
+![Resultado Ana](./img/resultado-ana.png)
 
 2. Recomendação para DANIEL (Nicho Sertanejo)
 Cenário: Daniel foca em um artista. O sistema expande para outros artistas do mesmo gênero baseando-se em fãs comuns.
@@ -47,7 +47,7 @@ MATCH (outro)-[:OUVIU|CURTIU]->(rec:Musica)-[:CANTADA_POR]->(artRec:Artista)
 WHERE NOT (eu)-[:OUVIU|CURTIU]->(rec)
 RETURN eu.nome, rec.titulo, artRec.nome AS Artista LIMIT 3;
 Resultado:
-    ![Schema do Banco](./img/resultado daniel.png)
+![Resultado Daniel](./img/resultado-daniel.png)
 
 3. Recomendação para GABRIEL (Padrão de Rock)
 Cenário: Identifica que Gabriel e Helena compartilham o gosto por "Yellow" e sugere outras faixas do histórico dela.
@@ -59,7 +59,7 @@ MATCH (outro)-[:OUVIU|CURTIU]->(rec:Musica)
 WHERE NOT (eu)-[:OUVIU|CURTIU]->(rec)
 RETURN eu.nome, rec.titulo AS Sugestao LIMIT 2;
 Resultado:
-    ![Schema do Banco](./img/resultado gabriel.png)
+![Resultado Gabriel](./img/resultado-gabriel.png)
 
 4. Recomendação para JULIA (Cold Start)
 Cenário: Julia é nova. O sistema usa interações mínimas para encontrar o vizinho mais próximo (Kevin).
@@ -71,7 +71,7 @@ MATCH (outro)-[:OUVIU|CURTIU]->(rec:Musica)
 WHERE NOT (eu)-[:OUVIU|CURTIU]->(rec)
 RETURN eu.nome, rec.titulo AS Sugestao LIMIT 2;
 Resultado:
-    ![Schema do Banco](./img/resultado julia.png)
+![Resultado Julia](./img/resultado-julia.png)
 
 5. Recomendação Avançada para BRUNO (Ontologia)
 Cenário: Usa a relação [:SIMILAR_A] entre artistas para sugerir conteúdo novo de forma inteligente.
@@ -83,4 +83,4 @@ MATCH (a)-[:SIMILAR_A]-(artistaParecido:Artista)<-[:CANTADA_POR]-(rec:Musica)
 WHERE NOT (u)-[:OUVIU|CURTIU]->(rec)
 RETURN u.nome, rec.titulo, "Porque você gosta de " + a.nome AS Motivo LIMIT 3;
 Resultado:
-    ![Schema do Banco](./img/resultado bruno.png)
+![Resultado Bruno](./img/resultado-bruno.png)
