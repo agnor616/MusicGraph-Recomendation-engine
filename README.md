@@ -35,6 +35,7 @@ RETURN eu.nome, rec.titulo, count(DISTINCT outro) AS Score
 ORDER BY Score DESC LIMIT 3;
 
 Resultado:
+
 ![Resultado Ana](./img/resultado-ana.png)
 
 2. Recomendação para DANIEL (Nicho Sertanejo)
@@ -49,6 +50,7 @@ WHERE NOT (eu)-[:OUVIU|CURTIU]->(rec)
 RETURN eu.nome, rec.titulo, artRec.nome AS Artista LIMIT 3;
 
 Resultado:
+
 ![Resultado Daniel](./img/resultado-daniel.png)
 
 3. Recomendação para GABRIEL (Padrão de Rock)
@@ -62,6 +64,7 @@ WHERE NOT (eu)-[:OUVIU|CURTIU]->(rec)
 RETURN eu.nome, rec.titulo AS Sugestao LIMIT 2;
 
 Resultado:
+
 ![Resultado Gabriel](./img/resultado-gabriel.png)
 
 4. Recomendação para JULIA (Cold Start)
@@ -89,4 +92,5 @@ WHERE NOT (u)-[:OUVIU|CURTIU]->(rec)
 RETURN u.nome, rec.titulo, "Porque você gosta de " + a.nome AS Motivo LIMIT 3;
 
 Resultado:
+
 ![Resultado Bruno](./img/resultado-bruno.png)
